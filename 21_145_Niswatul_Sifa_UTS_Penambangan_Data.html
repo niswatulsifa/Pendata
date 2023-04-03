@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UTS Penambangan Data &#8212; My sample book</title>
+    <title>Klasifikasi Naive Bayes &#8212; My sample book</title>
   
   
   
@@ -63,6 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '21_145_Niswatul_Sifa_UTS_Penambangan_Data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="Naive_Bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,10 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Load_Data.html">Load Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Naive Bayes</a></li>
-<li class="toctree-l1 current active"><a class="reference internal" href="21_145_Niswatul_Sifa_UTS_Penambangan_Data.html">UTS Penambangan Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">UTS Penambangan Data</a></li>
+
 </ul>
 
     </div>
@@ -371,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Klasifikasi Naive Bayes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,7 +382,27 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Klasifikasi Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dataset">Import Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-normalisasi-data">Preprocessing / Normalisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data">Split Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data">Training Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predict">Predict</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-knn">Klasifikasi KNN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Import Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Preprocessing / Normalisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Split Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Training Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Predict</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Accuracy</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -393,30 +415,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>###<strong>Analisa data klasifikasi data dengan menggunakan naive bayes dan knn untuk data</strong></p>
-<p><strong>Langkah 1 : Mengimport Library</strong></p>
-<p>Untuk langkah pertama ini akan selalu mencakup mengimpor library yaitu NumPy, Pandas, dan Matplotlib. Yang mana NumPy (Numerical Python) adalah library Python yang fokus pada scientific computing. NumPy memiliki kemampuan untuk membentuk objek N-dimensional array, yang mirip dengan list pada Python. Kemudian Pandas (Python for Data Analysis) adalah library Python yang fokus untuk proses analisis data seperti manipulasi data, persiapan data, dan pembersihan data. Sedangkan Matplotlib adalah library Python yang fokus pada visualisasi data seperti membuat plot grafik.</p>
+  <div class="section" id="klasifikasi-naive-bayes">
+<h1>Klasifikasi Naive Bayes<a class="headerlink" href="#klasifikasi-naive-bayes" title="Permalink to this heading">#</a></h1>
+<div class="section" id="import-library">
+<h2>Import Library<a class="headerlink" href="#import-library" title="Permalink to this heading">#</a></h2>
+<p>Kode import pandas as pd berfungsi untuk mengimpor library Pandas ke dalam kode program dan menetapkan alias (nama panggilan) “pd” yang digunakan sebagai singkatan dari “Pandas”.
+Kode import sklearn digunakan untuk mengimport library scikit-learn ke dalam kode program. Library ini adalah salah satu library yang populer digunakan dalam machine learning.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Langkah 2 : Mengimport Kumpulan Data</strong></p>
-<p>Pada langkah ini, kami akan mengimpor dataset Breast Cancer yang disimpan di repositori github saya sebagai breast-cancer.csv dan menyimpannya ke variabel dataset. Kemudian menampilkan 5 baris pertama dari data tersebut.</p>
+</div>
+<div class="section" id="import-dataset">
+<h2>Import Dataset<a class="headerlink" href="#import-dataset" title="Permalink to this heading">#</a></h2>
+<p>pd.read_csvdigunakan untuk membaca dataset yang tersimpan dalam format file CSV dari suatu URL yang diakses melalui internet. Dataset yang dibaca adalah dataset tentang kanker payudara yang tersedia di GitHub repository bernama “datasets”.</p>
+<p>Fungsi pd.read_csv() adalah fungsi bawaan dari library Pandas yang digunakan untuk membaca file CSV dan mengubahnya menjadi suatu objek DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/datasets/breast-cancer/master/data/breast-cancer.csv&#39;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-34282706-6fb4-460a-98ee-9f02cf58be00">
+  <div id="df-8044d371-52e1-467f-aa23-071dc9139532">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -514,252 +541,49 @@ document.write(`
       <td>False</td>
       <td>recurrence-events</td>
     </tr>
-  </tbody>
-</table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-34282706-6fb4-460a-98ee-9f02cf58be00')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-        
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-      
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-34282706-6fb4-460a-98ee-9f02cf58be00 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-34282706-6fb4-460a-98ee-9f02cf58be00');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-  </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;mefalsepause&#39;</span><span class="p">,</span> <span class="s1">&#39;tumor-size&#39;</span><span class="p">,</span> <span class="s1">&#39;inv-falsedes&#39;</span><span class="p">,</span> <span class="s1">&#39;falsede-caps&#39;</span><span class="p">,</span> <span class="s1">&#39;deg-malig&#39;</span><span class="p">,</span> <span class="s1">&#39;breast&#39;</span><span class="p">,</span> <span class="s1">&#39;breast-quad&#39;</span><span class="p">,</span> <span class="s1">&#39;irradiat&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span>
-
-<span class="n">dataset</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">col_names</span>
-
-<span class="n">dataset</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;age&#39;, &#39;mefalsepause&#39;, &#39;tumor-size&#39;, &#39;inv-falsedes&#39;, &#39;falsede-caps&#39;,
-       &#39;deg-malig&#39;, &#39;breast&#39;, &#39;breast-quad&#39;, &#39;irradiat&#39;, &#39;class&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 272 entries, 0 to 271
-Data columns (total 10 columns):
- #   Column        Non-Null Count  Dtype 
----  ------        --------------  ----- 
- 0   age           272 non-null    object
- 1   mefalsepause  272 non-null    object
- 2   tumor-size    272 non-null    object
- 3   inv-falsedes  272 non-null    object
- 4   falsede-caps  264 non-null    object
- 5   deg-malig     272 non-null    int64 
- 6   breast        272 non-null    object
- 7   breast-quad   271 non-null    object
- 8   irradiat      272 non-null    bool  
- 9   class         272 non-null    object
-dtypes: bool(1), int64(1), object(8)
-memory usage: 19.5+ KB
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find categorical variables</span>
-
-<span class="n">categorical</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="o">==</span><span class="s1">&#39;O&#39;</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are </span><span class="si">{}</span><span class="s1"> categorical variables</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">categorical</span><span class="p">)))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The categorical variables are :</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 8 categorical variables
-
-The categorical variables are :
-
- [&#39;age&#39;, &#39;mefalsepause&#39;, &#39;tumor-size&#39;, &#39;inv-falsedes&#39;, &#39;falsede-caps&#39;, &#39;breast&#39;, &#39;breast-quad&#39;, &#39;class&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="n">categorical</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-7af48bd4-d9d2-4ebf-bc2b-6195e4d0cebe">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>mefalsepause</th>
-      <th>tumor-size</th>
-      <th>inv-falsedes</th>
-      <th>falsede-caps</th>
-      <th>breast</th>
-      <th>breast-quad</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
-      <th>0</th>
-      <td>40-49</td>
+      <th>5</th>
+      <td>50-59</td>
       <td>premefalse</td>
-      <td>15-19</td>
-      <td>0-2</td>
-      <td>True</td>
+      <td>25-29</td>
+      <td>3-5</td>
+      <td>False</td>
+      <td>2</td>
       <td>right</td>
       <td>left_up</td>
-      <td>recurrence-events</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>50-59</td>
-      <td>ge40</td>
-      <td>15-19</td>
-      <td>0-2</td>
-      <td>False</td>
-      <td>right</td>
-      <td>central</td>
+      <td>True</td>
       <td>false-recurrence-events</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>6</th>
       <td>50-59</td>
       <td>ge40</td>
-      <td>35-39</td>
+      <td>40-44</td>
       <td>0-2</td>
       <td>False</td>
+      <td>3</td>
       <td>left</td>
-      <td>left_low</td>
-      <td>recurrence-events</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>40-49</td>
-      <td>premefalse</td>
-      <td>35-39</td>
-      <td>0-2</td>
-      <td>True</td>
-      <td>right</td>
-      <td>left_low</td>
+      <td>left_up</td>
+      <td>False</td>
       <td>false-recurrence-events</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>7</th>
       <td>40-49</td>
       <td>premefalse</td>
-      <td>30-34</td>
-      <td>3-5</td>
-      <td>True</td>
+      <td>10-14</td>
+      <td>0-2</td>
+      <td>False</td>
+      <td>2</td>
       <td>left</td>
-      <td>right_up</td>
-      <td>recurrence-events</td>
+      <td>left_up</td>
+      <td>False</td>
+      <td>false-recurrence-events</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-7af48bd4-d9d2-4ebf-bc2b-6195e4d0cebe')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8044d371-52e1-467f-aa23-071dc9139532')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -810,12 +634,12 @@ The categorical variables are :
 
       <script>
         const buttonEl =
-          document.querySelector('#df-7af48bd4-d9d2-4ebf-bc2b-6195e4d0cebe button.colab-df-convert');
+          document.querySelector('#df-8044d371-52e1-467f-aa23-071dc9139532 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-7af48bd4-d9d2-4ebf-bc2b-6195e4d0cebe');
+          const element = document.querySelector('#df-8044d371-52e1-467f-aa23-071dc9139532');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -836,1154 +660,110 @@ The categorical variables are :
   </div>
   </div></div>
 </div>
+</div>
+<div class="section" id="preprocessing-normalisasi-data">
+<h2>Preprocessing / Normalisasi Data<a class="headerlink" href="#preprocessing-normalisasi-data" title="Permalink to this heading">#</a></h2>
+<p>Kode from sklearn.preprocessing import LabelEncoder digunakan untuk mengimpor class LabelEncoder dari library sklearn.preprocessing.</p>
+<p>Class LabelEncoder pada scikit-learn berfungsi untuk mengubah label atau nilai-nilai kategori pada suatu fitur menjadi nilai bilangan bulat secara berurutan, dimulai dari 0 hingga N-1, di mana N adalah jumlah kategori yang unik.</p>
+<p>Kode le = LabelEncoder() digunakan untuk membuat objek LabelEncoder yang akan digunakan untuk mengubah nilai-nilai kategori menjadi bilangan bulat.</p>
+<p>Kode dataset = dataset.apply(le.fit_transform) digunakan untuk menerapkan metode fit_transform() pada objek LabelEncoder dan mengubah nilai-nilai kategori pada dataset menjadi bilangan bulat. Method fit_transform() adalah gabungan dari method fit() dan transform(). Method fit() digunakan untuk mempelajari data training dan method transform() digunakan untuk mengubah data menjadi format yang diinginkan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="n">categorical</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age             0
-mefalsepause    0
-tumor-size      0
-inv-falsedes    0
-falsede-caps    8
-breast          0
-breast-quad     1
-class           0
-dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   age  mefalsepause  tumor-size  inv-falsedes  falsede-caps  deg-malig  \
+0    2             2           2             0             1          2   
+1    3             0           2             0             0          0   
+2    3             0           6             0             0          1   
+3    2             2           6             0             1          2   
+4    2             2           5             4             1          1   
+
+   breast  breast-quad  irradiat  class  
+0       1            2         0      1  
+1       1            0         0      0  
+2       0            1         0      1  
+3       1            1         1      0  
+4       0            4         0      1  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kode from sklearn.preprocessing import MinMaxScaler digunakan untuk mengimpor class MinMaxScaler dari library sklearn.preprocessing.</p>
+<p>Class MinMaxScaler pada scikit-learn berfungsi untuk melakukan normalisasi data dengan mengubah rentang nilai pada setiap fitur menjadi rentang yang diinginkan, dalam hal ini antara 0 dan 1.</p>
+<p>Kode scaler = MinMaxScaler() digunakan untuk membuat objek MinMaxScaler yang akan digunakan untuk melakukan normalisasi pada dataset.</p>
+<p>Kode dataset = scaler.fit_transform(dataset) digunakan untuk menerapkan metode fit_transform() pada objek MinMaxScaler dan melakukan normalisasi pada dataset. Method fit_transform() adalah gabungan dari method fit() dan transform(). Method fit() digunakan untuk mempelajari data training dan method transform() digunakan untuk mengubah data menjadi format yang diinginkan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">categorical</span><span class="p">:</span> 
-    
-    <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50-59    91
-40-49    87
-60-69    53
-30-39    34
-70-79     6
-20-29     1
-Name: age, dtype: int64
-premefalse    143
-ge40          122
-lt40            7
-Name: mefalsepause, dtype: int64
-30-34    60
-25-29    51
-20-24    47
-15-19    26
-10-14    26
-40-44    21
-35-39    18
-0-4       8
-50-54     8
-5-9       4
-45-49     3
-Name: tumor-size, dtype: int64
-0-2      200
-3-5       36
-6-8       16
-9-11      10
-15-17      6
-12-14      3
-24-26      1
-Name: inv-falsedes, dtype: int64
-False    209
-True      55
-Name: falsede-caps, dtype: int64
-left     143
-right    129
-Name: breast, dtype: int64
-left_low     103
-left_up       92
-right_up      32
-right_low     24
-central       20
-Name: breast-quad, dtype: int64
-false-recurrence-events    191
-recurrence-events           81
-Name: class, dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4 1.  0.2 ... 0.4 0.  1. ]
+ [0.6 0.  0.2 ... 0.  0.  0. ]
+ [0.6 0.  0.6 ... 0.2 0.  1. ]
+ ...
+ [0.2 1.  0.5 ... 0.8 0.  0. ]
+ [0.6 1.  0.2 ... 0.2 0.  0. ]
+ [0.6 0.  0.7 ... 0.8 0.  0. ]]
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">categorical</span><span class="p">:</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="s1">&#39; contains &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s1">&#39; labels&#39;</span><span class="p">)</span>
-</pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age  contains  6  labels
-mefalsepause  contains  3  labels
-tumor-size  contains  11  labels
-inv-falsedes  contains  7  labels
-falsede-caps  contains  3  labels
-breast  contains  2  labels
-breast-quad  contains  6  labels
-class  contains  2  labels
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numerical</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="o">!=</span><span class="s1">&#39;O&#39;</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are </span><span class="si">{}</span><span class="s1"> numerical variables</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numerical</span><span class="p">)))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The numerical variables are :&#39;</span><span class="p">,</span> <span class="n">numerical</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 2 numerical variables
-
-The numerical variables are : [&#39;deg-malig&#39;, &#39;irradiat&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="n">numerical</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-0e44b218-fb8d-4c61-a68d-9dde6bff30f1">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>deg-malig</th>
-      <th>irradiat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2</td>
-      <td>False</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-0e44b218-fb8d-4c61-a68d-9dde6bff30f1')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-        
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-      
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-0e44b218-fb8d-4c61-a68d-9dde6bff30f1 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-0e44b218-fb8d-4c61-a68d-9dde6bff30f1');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-  </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
+<div class="section" id="split-data">
+<h2>Split Data<a class="headerlink" href="#split-data" title="Permalink to this heading">#</a></h2>
+<p>Pada tahap ini dataset dibagi menggunakan fungsi train_test_split, yang berguna untuk membagi dataset menjadi data latih dan data uji. Fungsi ini digunakan untuk membagi dataset menjadi data latih dan data uji secara acak, sehingga data latih dan data uji dapat merepresentasikan dataset secara keseluruhan.</p>
+<p>Pada baris kedua dan ketiga, variabel independen (X) dan variabel dependen (y) diinisialisasi dengan slicing dari dataset. Slicing dilakukan untuk memilih kolom-kolom dari dataset, di mana ‘:’ menunjukkan semua baris dan ‘-1’ menunjukkan kolom terakhir.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Fungsi train_test_split() pada sklearn berfungsi untuk membagi dataset menjadi data training dan data testing secara acak, dengan parameter yang ditentukan. Parameter yang digunakan pada kode tersebut adalah sebagai berikut:</p>
+<p>X adalah variabel yang berisi fitur atau variabel independen dari dataset. y adalah variabel yang berisi label atau variabel dependen dari dataset. test_size adalah proporsi ukuran dataset yang akan digunakan sebagai data testing. Dalam hal ini, data testing akan digunakan sebanyak 30% dari seluruh dataset. random_state adalah bilangan integer atau angka yang digunakan sebagai seed (benih) pada algoritma pengacakan. Pada kasus ini, random_state diatur menjadi 42 untuk memastikan bahwa pembagian dataset yang dihasilkan dapat direproduksi atau sama jika dijalankan di mesin lain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((190, 9), (82, 9))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="training-data">
+<h2>Training Data<a class="headerlink" href="#training-data" title="Permalink to this heading">#</a></h2>
+<p>Tahap ini merupakan tahapan training untuk melakukan prediksi pada data uji, dengan mengimport kelas GaussianNB dari library Scikit-learn (sklearn.naive_bayes) dan membuat objek GNB dari kelas GaussianNB.</p>
+<p>Kemudian, fungsi fit() dipanggil pada objek GNB yang telah dibuat dengan parameter X_train dan y_train, yaitu data latih (variabel independen dan dependen) yang digunakan untuk melatih model.</p>
+<p>Setelah melakukan training, model GNB dapat digunakan untuk melakukan prediksi pada data uji.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>category_encoders
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting category_encoders
-  Downloading category_encoders-2.6.0-py2.py3-none-any.whl (81 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/81.2 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">81.2/81.2 KB</span> <span class=" -Color -Color-Red">2.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: scikit-learn&gt;=0.20.0 in /usr/local/lib/python3.9/dist-packages (from category_encoders) (1.2.2)
-Requirement already satisfied: pandas&gt;=1.0.5 in /usr/local/lib/python3.9/dist-packages (from category_encoders) (1.4.4)
-Requirement already satisfied: statsmodels&gt;=0.9.0 in /usr/local/lib/python3.9/dist-packages (from category_encoders) (0.13.5)
-Requirement already satisfied: numpy&gt;=1.14.0 in /usr/local/lib/python3.9/dist-packages (from category_encoders) (1.22.4)
-Requirement already satisfied: patsy&gt;=0.5.1 in /usr/local/lib/python3.9/dist-packages (from category_encoders) (0.5.3)
-Requirement already satisfied: scipy&gt;=1.0.0 in /usr/local/lib/python3.9/dist-packages (from category_encoders) (1.10.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.9/dist-packages (from pandas&gt;=1.0.5-&gt;category_encoders) (2022.7.1)
-Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.9/dist-packages (from pandas&gt;=1.0.5-&gt;category_encoders) (2.8.2)
-Requirement already satisfied: six in /usr/local/lib/python3.9/dist-packages (from patsy&gt;=0.5.1-&gt;category_encoders) (1.16.0)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn&gt;=0.20.0-&gt;category_encoders) (3.1.0)
-Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist-packages (from scikit-learn&gt;=0.20.0-&gt;category_encoders) (1.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: packaging&gt;=21.3 in /usr/local/lib/python3.9/dist-packages (from statsmodels&gt;=0.9.0-&gt;category_encoders) (23.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: category_encoders
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed category_encoders-2.6.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">category_encoders</span> <span class="k">as</span> <span class="nn">ce</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoder</span> <span class="o">=</span> <span class="n">ce</span><span class="o">.</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;mefalsepause&#39;</span><span class="p">,</span> <span class="s1">&#39;tumor-size&#39;</span><span class="p">,</span> <span class="s1">&#39;inv-falsedes&#39;</span><span class="p">,</span> <span class="s1">&#39;falsede-caps&#39;</span><span class="p">,</span> <span class="s1">&#39;deg-malig&#39;</span><span class="p">,</span> <span class="s1">&#39;breast&#39;</span><span class="p">,</span> <span class="s1">&#39;breast-quad&#39;</span><span class="p">,</span> <span class="s1">&#39;irradiat&#39;</span><span class="p">])</span>
-
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-4541df19-7e69-4b75-a36f-503ab2c01acd">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age_1</th>
-      <th>age_2</th>
-      <th>age_3</th>
-      <th>age_4</th>
-      <th>age_5</th>
-      <th>mefalsepause_1</th>
-      <th>mefalsepause_2</th>
-      <th>mefalsepause_3</th>
-      <th>tumor-size_1</th>
-      <th>tumor-size_2</th>
-      <th>...</th>
-      <th>deg-malig_3</th>
-      <th>breast_1</th>
-      <th>breast_2</th>
-      <th>breast-quad_1</th>
-      <th>breast-quad_2</th>
-      <th>breast-quad_3</th>
-      <th>breast-quad_4</th>
-      <th>breast-quad_5</th>
-      <th>irradiat_1</th>
-      <th>irradiat_2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>189</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>196</th>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>129</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>252</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 41 columns</p>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-4541df19-7e69-4b75-a36f-503ab2c01acd')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-        
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-      
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-4541df19-7e69-4b75-a36f-503ab2c01acd button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-4541df19-7e69-4b75-a36f-503ab2c01acd');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-  </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(190, 41)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-caeb059c-6f83-4a72-8a6a-27f87ad66ca2">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age_1</th>
-      <th>age_2</th>
-      <th>age_3</th>
-      <th>age_4</th>
-      <th>age_5</th>
-      <th>mefalsepause_1</th>
-      <th>mefalsepause_2</th>
-      <th>mefalsepause_3</th>
-      <th>tumor-size_1</th>
-      <th>tumor-size_2</th>
-      <th>...</th>
-      <th>deg-malig_3</th>
-      <th>breast_1</th>
-      <th>breast_2</th>
-      <th>breast-quad_1</th>
-      <th>breast-quad_2</th>
-      <th>breast-quad_3</th>
-      <th>breast-quad_4</th>
-      <th>breast-quad_5</th>
-      <th>irradiat_1</th>
-      <th>irradiat_2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>217</th>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>258</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>201</th>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>111</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 41 columns</p>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-caeb059c-6f83-4a72-8a6a-27f87ad66ca2')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-        
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-      
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-caeb059c-6f83-4a72-8a6a-27f87ad66ca2 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-caeb059c-6f83-4a72-8a6a-27f87ad66ca2');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-  </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(82, 41)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">RobustScaler</span>
-
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">RobustScaler</span><span class="p">()</span>
-
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">cols</span><span class="p">])</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">cols</span><span class="p">])</span>
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-659f75e0-f01a-4f24-9b25-d56f5f3b8304">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th></th>
-      <th>age_1</th>
-      <th>age_2</th>
-      <th>age_3</th>
-      <th>age_4</th>
-      <th>age_5</th>
-      <th>mefalsepause_1</th>
-      <th>mefalsepause_2</th>
-      <th>mefalsepause_3</th>
-      <th>tumor-size_1</th>
-      <th>tumor-size_2</th>
-      <th>...</th>
-      <th>deg-malig_3</th>
-      <th>breast_1</th>
-      <th>breast_2</th>
-      <th>breast-quad_1</th>
-      <th>breast-quad_2</th>
-      <th>breast-quad_3</th>
-      <th>breast-quad_4</th>
-      <th>breast-quad_5</th>
-      <th>irradiat_1</th>
-      <th>irradiat_2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>-1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>-1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 41 columns</p>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-659f75e0-f01a-4f24-9b25-d56f5f3b8304')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-        
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-      
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-659f75e0-f01a-4f24-9b25-d56f5f3b8304 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-659f75e0-f01a-4f24-9b25-d56f5f3b8304');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-  </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train a Gaussian Naive Bayes classifier on the training set</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-
-
-<span class="c1"># instantiate the model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-
-
-<span class="c1"># fit the model</span>
 <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1991,84 +771,74 @@ Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist
 <div class="cell_output docutils container">
 <div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GaussianNB</label><div class="sk-toggleable__content"><pre>GaussianNB()</pre></div></div></div></div></div></div></div>
 </div>
+</div>
+<div class="section" id="predict">
+<h2>Predict<a class="headerlink" href="#predict" title="Permalink to this heading">#</a></h2>
+<p>Fungsi predict() pada objek GNB digunakan untuk melakukan prediksi kelas pada variabel dependen (y) pada data uji (X_test). Hasil prediksi tersebut disimpan pada variabel y_pred.</p>
+<p>Tujuannya adalah untuk mengevaluasi sejauh mana model dapat memprediksi kelas dengan benar pada data yang belum pernah dilihat sebelumnya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="n">y_pred</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;recurrence-events&#39;, &#39;false-recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;, &#39;recurrence-events&#39;,
-       &#39;false-recurrence-events&#39;], dtype=&#39;&lt;U23&#39;)
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="accuracy">
+<h2>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h2>
+<p>Fungsi accuracy_score() akan menghitung jumlah prediksi yang benar dan membaginya dengan jumlah total data uji untuk mendapatkan nilai akurasi. Akurasi adalah metrik evaluasi yang digunakan untuk mengukur seberapa akurat model dalam memprediksi kelas pada data uji.</p>
+<p>Dalam hal ini, nilai akurasi yang dihasilkan akan disimpan pada variabel ac,semakin tinggi nilai akurasi, semakin baik kinerja model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model accuracy score: </span><span class="si">{0:0.4f}</span><span class="s1">&#39;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model accuracy score: 0.6220
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Real Values&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted Values&#39;</span><span class="p">:</span><span class="n">y_pred</span><span class="p">})</span>
-<span class="n">dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score : &quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy Score :  0.7195121951219512
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="klasifikasi-knn">
+<h1>Klasifikasi KNN<a class="headerlink" href="#klasifikasi-knn" title="Permalink to this heading">#</a></h1>
+<div class="section" id="id1">
+<h2>Import Library<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Kode import pandas as pd berfungsi untuk mengimpor library Pandas ke dalam kode program dan menetapkan alias (nama panggilan) “pd” yang digunakan sebagai singkatan dari “Pandas”.
+Kode import sklearn digunakan untuk mengimport library scikit-learn ke dalam kode program. Library ini adalah salah satu library yang populer digunakan dalam machine learning.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Import Dataset<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>pd.read_csvdigunakan untuk membaca dataset yang tersimpan dalam format file CSV dari suatu URL yang diakses melalui internet. Dataset yang dibaca adalah dataset tentang kanker payudara yang tersedia di GitHub repository bernama “datasets”.</p>
+<p>Fungsi pd.read_csv() adalah fungsi bawaan dari library Pandas yang digunakan untuk membaca file CSV dan mengubahnya menjadi suatu objek DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/datasets/breast-cancer/master/data/breast-cancer.csv&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-462138a1-2a54-4d84-8097-d6b80f548869">
+  <div id="df-20d5ba41-ec08-4515-8807-16d8072494d0">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -2088,71 +858,127 @@ Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Real Values</th>
-      <th>Predicted Values</th>
+      <th>age</th>
+      <th>mefalsepause</th>
+      <th>tumor-size</th>
+      <th>inv-falsedes</th>
+      <th>falsede-caps</th>
+      <th>deg-malig</th>
+      <th>breast</th>
+      <th>breast-quad</th>
+      <th>irradiat</th>
+      <th>class</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>217</th>
-      <td>false-recurrence-events</td>
-      <td>false-recurrence-events</td>
-    </tr>
-    <tr>
-      <th>258</th>
-      <td>false-recurrence-events</td>
+      <th>0</th>
+      <td>40-49</td>
+      <td>premefalse</td>
+      <td>15-19</td>
+      <td>0-2</td>
+      <td>True</td>
+      <td>3</td>
+      <td>right</td>
+      <td>left_up</td>
+      <td>False</td>
       <td>recurrence-events</td>
     </tr>
     <tr>
-      <th>201</th>
-      <td>recurrence-events</td>
-      <td>recurrence-events</td>
-    </tr>
-    <tr>
-      <th>111</th>
-      <td>false-recurrence-events</td>
-      <td>false-recurrence-events</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>false-recurrence-events</td>
+      <th>1</th>
+      <td>50-59</td>
+      <td>ge40</td>
+      <td>15-19</td>
+      <td>0-2</td>
+      <td>False</td>
+      <td>1</td>
+      <td>right</td>
+      <td>central</td>
+      <td>False</td>
       <td>false-recurrence-events</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>109</th>
-      <td>false-recurrence-events</td>
-      <td>recurrence-events</td>
-    </tr>
-    <tr>
-      <th>204</th>
-      <td>recurrence-events</td>
-      <td>false-recurrence-events</td>
-    </tr>
-    <tr>
-      <th>261</th>
-      <td>false-recurrence-events</td>
-      <td>false-recurrence-events</td>
-    </tr>
-    <tr>
-      <th>191</th>
-      <td>false-recurrence-events</td>
+      <th>2</th>
+      <td>50-59</td>
+      <td>ge40</td>
+      <td>35-39</td>
+      <td>0-2</td>
+      <td>False</td>
+      <td>2</td>
+      <td>left</td>
+      <td>left_low</td>
+      <td>False</td>
       <td>recurrence-events</td>
     </tr>
     <tr>
-      <th>33</th>
+      <th>3</th>
+      <td>40-49</td>
+      <td>premefalse</td>
+      <td>35-39</td>
+      <td>0-2</td>
+      <td>True</td>
+      <td>3</td>
+      <td>right</td>
+      <td>left_low</td>
+      <td>True</td>
       <td>false-recurrence-events</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>40-49</td>
+      <td>premefalse</td>
+      <td>30-34</td>
+      <td>3-5</td>
+      <td>True</td>
+      <td>2</td>
+      <td>left</td>
+      <td>right_up</td>
+      <td>False</td>
+      <td>recurrence-events</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>50-59</td>
+      <td>premefalse</td>
+      <td>25-29</td>
+      <td>3-5</td>
+      <td>False</td>
+      <td>2</td>
+      <td>right</td>
+      <td>left_up</td>
+      <td>True</td>
+      <td>false-recurrence-events</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>50-59</td>
+      <td>ge40</td>
+      <td>40-44</td>
+      <td>0-2</td>
+      <td>False</td>
+      <td>3</td>
+      <td>left</td>
+      <td>left_up</td>
+      <td>False</td>
+      <td>false-recurrence-events</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>40-49</td>
+      <td>premefalse</td>
+      <td>10-14</td>
+      <td>0-2</td>
+      <td>False</td>
+      <td>2</td>
+      <td>left</td>
+      <td>left_up</td>
+      <td>False</td>
       <td>false-recurrence-events</td>
     </tr>
   </tbody>
 </table>
-<p>82 rows × 2 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-462138a1-2a54-4d84-8097-d6b80f548869')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-20d5ba41-ec08-4515-8807-16d8072494d0')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -2203,12 +1029,12 @@ Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist
 
       <script>
         const buttonEl =
-          document.querySelector('#df-462138a1-2a54-4d84-8097-d6b80f548869 button.colab-df-convert');
+          document.querySelector('#df-20d5ba41-ec08-4515-8807-16d8072494d0 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-462138a1-2a54-4d84-8097-d6b80f548869');
+          const element = document.querySelector('#df-20d5ba41-ec08-4515-8807-16d8072494d0');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -2228,6 +1054,156 @@ Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist
     </div>
   </div>
   </div></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Preprocessing / Normalisasi Data<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Kode from sklearn.preprocessing import LabelEncoder digunakan untuk mengimpor class LabelEncoder dari library sklearn.preprocessing.</p>
+<p>Class LabelEncoder pada scikit-learn berfungsi untuk mengubah label atau nilai-nilai kategori pada suatu fitur menjadi nilai bilangan bulat secara berurutan, dimulai dari 0 hingga N-1, di mana N adalah jumlah kategori yang unik.</p>
+<p>Kode le = LabelEncoder() digunakan untuk membuat objek LabelEncoder yang akan digunakan untuk mengubah nilai-nilai kategori menjadi bilangan bulat.</p>
+<p>Kode dataset = dataset.apply(le.fit_transform) digunakan untuk menerapkan metode fit_transform() pada objek LabelEncoder dan mengubah nilai-nilai kategori pada dataset menjadi bilangan bulat. Method fit_transform() adalah gabungan dari method fit() dan transform(). Method fit() digunakan untuk mempelajari data training dan method transform() digunakan untuk mengubah data menjadi format yang diinginkan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   age  mefalsepause  tumor-size  inv-falsedes  falsede-caps  deg-malig  \
+0    2             2           2             0             1          2   
+1    3             0           2             0             0          0   
+2    3             0           6             0             0          1   
+3    2             2           6             0             1          2   
+4    2             2           5             4             1          1   
+
+   breast  breast-quad  irradiat  class  
+0       1            2         0      1  
+1       1            0         0      0  
+2       0            1         0      1  
+3       1            1         1      0  
+4       0            4         0      1  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kode from sklearn.preprocessing import MinMaxScaler digunakan untuk mengimpor class MinMaxScaler dari library sklearn.preprocessing.</p>
+<p>Class MinMaxScaler pada scikit-learn berfungsi untuk melakukan normalisasi data dengan mengubah rentang nilai pada setiap fitur menjadi rentang yang diinginkan, dalam hal ini antara 0 dan 1.</p>
+<p>Kode scaler = MinMaxScaler() digunakan untuk membuat objek MinMaxScaler yang akan digunakan untuk melakukan normalisasi pada dataset.</p>
+<p>Kode dataset = scaler.fit_transform(dataset) digunakan untuk menerapkan metode fit_transform() pada objek MinMaxScaler dan melakukan normalisasi pada dataset. Method fit_transform() adalah gabungan dari method fit() dan transform(). Method fit() digunakan untuk mempelajari data training dan method transform() digunakan untuk mengubah data menjadi format yang diinginkan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4 1.  0.2 ... 0.4 0.  1. ]
+ [0.6 0.  0.2 ... 0.  0.  0. ]
+ [0.6 0.  0.6 ... 0.2 0.  1. ]
+ ...
+ [0.2 1.  0.5 ... 0.8 0.  0. ]
+ [0.6 1.  0.2 ... 0.2 0.  0. ]
+ [0.6 0.  0.7 ... 0.8 0.  0. ]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Split Data<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Pada tahap ini dataset dibagi menggunakan fungsi train_test_split, yang berguna untuk membagi dataset menjadi data latih dan data uji. Fungsi ini digunakan untuk membagi dataset menjadi data latih dan data uji secara acak, sehingga data latih dan data uji dapat merepresentasikan dataset secara keseluruhan.</p>
+<p>Pada baris kedua dan ketiga, variabel independen (X) dan variabel dependen (y) diinisialisasi dengan slicing dari dataset. Slicing dilakukan untuk memilih kolom-kolom dari dataset, di mana ‘:’ menunjukkan semua baris dan ‘-1’ menunjukkan kolom terakhir.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fungsi train_test_split() pada sklearn berfungsi untuk membagi dataset menjadi data training dan data testing secara acak, dengan parameter yang ditentukan. Parameter yang digunakan pada kode tersebut adalah sebagai berikut:</p>
+<p>X adalah variabel yang berisi fitur atau variabel independen dari dataset. y adalah variabel yang berisi label atau variabel dependen dari dataset. test_size adalah proporsi ukuran dataset yang akan digunakan sebagai data testing. Dalam hal ini, data testing akan digunakan sebanyak 30% dari seluruh dataset. random_state adalah bilangan integer atau angka yang digunakan sebagai seed (benih) pada algoritma pengacakan. Pada kasus ini, random_state diatur menjadi 42 untuk memastikan bahwa pembagian dataset yang dihasilkan dapat direproduksi atau sama jika dijalankan di mesin lain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Training Data<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>Tahap ini merupakan tahapan training untuk melakukan prediksi pada data uji, dengan mengimport kelas KNeighborsClassifier dari library Scikit-learn (sklearn.neighbors) dan membuat objek knn dari kelas tersebut.</p>
+<p>Selanjutnya, fungsi fit() dipanggil pada objek knn yang telah dibuat dengan parameter X_train dan y_train, yaitu data latih (variabel independen dan dependen) yang digunakan untuk melatih model. Pada saat pemanggilan fungsi fit(), objek knn akan mempelajari pola keterkaitan antara variabel independen dan dependen pada data latih yang telah diberikan.</p>
+<p>Setelah proses pelatihan selesai, model KNeighborsClassifier yang telah dilatih dapat digunakan untuk melakukan prediksi kelas pada data uji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div></div></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Predict<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>Fungsi predict() pada objek knn digunakan untuk melakukan prediksi kelas pada variabel dependen (y) pada data uji (X_test). Hasil prediksi tersebut disimpan pada variabel y_pred.
+Tujuannya adalah untuk mengevaluasi sejauh mana model dapat memprediksi kelas dengan benar pada data yang belum pernah dilihat sebelumnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Accuracy<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>Pada tahap ini yaitu melakukan perhitungan akurasi dengan mengimport fungsi accuracy_score dari library Scikit-learn (sklearn.metrics) dan menggunakan fungsi tersebut untuk menghitung nilai akurasi (accuracy) dari model K-Nearest Neighbors (KNN) yang telah dilatih pada data latih dan diuji pada data uji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy Score : &#39;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy Score :  0.6951219512195121
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -2260,17 +1236,17 @@ Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist
 <div class="footer-article-items footer-article__inner">
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
-      <div class="prev-next-area">
-        <a class="left-prev"
-           href="Naive_Bayes.html"
-           title="previous page">
-          <i class="fa-solid fa-angle-left"></i>
-          <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Naive Bayes</p>
-          </div>
-        </a>
-    </div></div>
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Naive_Bayes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Naive Bayes</p>
+      </div>
+    </a>
+</div></div>
   
 </div>
 
@@ -2287,7 +1263,27 @@ Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Klasifikasi Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dataset">Import Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-normalisasi-data">Preprocessing / Normalisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data">Split Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data">Training Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predict">Predict</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-knn">Klasifikasi KNN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Import Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Preprocessing / Normalisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Split Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Training Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Predict</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Accuracy</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
