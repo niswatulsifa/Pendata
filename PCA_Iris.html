@@ -385,10 +385,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>#<strong>Principal Component Analysis</strong></p>
+  <p><h1><strong></strong>Principal Component Analysis</strong></h1></p>
 <p>Principal component analysis (PCA) adalah teknik yang digunakan untuk menyederhanakan suatu data, dengan cara mentransformasi data secara linier sehingga terbentuk sistem koordinat baru dengan varians maksimum. PCA dapat digunakan untuk mereduksi dimensi suatu data tanpa mengurangi karakteristik data tersebut secara signifikan.</p>
 <div class="section" id="import-library">
-<h1>Import Library<a class="headerlink" href="#import-library" title="Permalink to this heading">#</a></h1>
+<h3>Import Library<a class="headerlink" href="#import-library" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -400,7 +400,7 @@ document.write(`
 </div>
 </div>
 <p>Kode tersebut mengimpor beberapa pustaka yang umum digunakan dalam analisis dan visualisasi data di Python. Pandas (<code class="docutils literal notranslate"><span class="pre">pd</span></code>) digunakan untuk manipulasi data, NumPy (<code class="docutils literal notranslate"><span class="pre">np</span></code>) digunakan untuk operasi numerik, Seaborn (<code class="docutils literal notranslate"><span class="pre">sns</span></code>) digunakan untuk visualisasi data, dan Matplotlib (<code class="docutils literal notranslate"><span class="pre">plt</span></code>) digunakan untuk membuat plot dan grafik.</p>
-<p>###Import Data</p>
+<p><h3>Import Data</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/niswatulsifa/data_iris/master/IrisDataset.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
@@ -562,7 +562,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">df=pd.read_csv('https://raw.githubusercontent.com/niswatulsifa/data_iris/master/IrisDataset.csv',</span> <span class="pre">sep=',')</span></code>: Kode ini menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> dari pustaka pandas (<code class="docutils literal notranslate"><span class="pre">pd</span></code>) untuk membaca file CSV dari URL yang diberikan. File CSV tersebut merupakan dataset Iris yang diambil dari repositori GitHub. Parameter <code class="docutils literal notranslate"><span class="pre">sep=','</span></code> digunakan untuk menentukan pemisah antar kolom dalam file CSV.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">df.head()</span></code>: Kode ini digunakan untuk mencetak lima baris pertama dari DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>. Fungsi <code class="docutils literal notranslate"><span class="pre">head()</span></code> adalah salah satu metode pandas yang berguna untuk melihat beberapa baris awal dari sebuah DataFrame.</p></li>
 </ol>
-<p>###menghitung jumlah kemunculan setiap nilai unik dalam kolom ‘species’</p>
+<p><h3>menghitung jumlah kemunculan setiap nilai unik dalam kolom ‘species’</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -579,7 +579,7 @@ Name: species, dtype: int64
 </div>
 </div>
 <p>Kode tersebut menghitung jumlah kemunculan setiap nilai unik dalam kolom ‘species’ dari DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> dan menampilkannya.</p>
-<p>###mengembalikan daftar kolom yang ada dalam DataFrame</p>
+<p><h3>mengembalikan daftar kolom yang ada dalam DataFrame</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
@@ -595,7 +595,7 @@ Name: species, dtype: int64
 </div>
 </div>
 <p>Kode tersebut mengembalikan daftar kolom yang ada dalam DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
-<p>###memisahkan data dalam DataFrame</p>
+<p><h3>memisahkan data dalam DataFrame</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -608,7 +608,7 @@ Name: species, dtype: int64
 <li><p>X=df.iloc[:,0:4].values mengambil nilai-nilai dari kolom 0 hingga 3 dari DataFrame df dan menyimpannya dalam variabel X.</p></li>
 <li><p>y=df.iloc[:,4].values mengambil nilai-nilai dari kolom ke-4 (kolom “species”) dari DataFrame df dan menyimpannya dalam variabel y.</p></li>
 </ol>
-<p>###membuat gambar histogram dari empat fitur dalam DataFrame ‘X’</p>
+<p><h3>membuat gambar histogram dari empat fitur dalam DataFrame ‘X’</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_dict</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;setosa&#39;</span><span class="p">,</span>
@@ -651,7 +651,7 @@ Name: species, dtype: int64
 <li><p>plt.tight_layout() menyesuaikan tata letak plot agar lebih rapi.
 plt.show() menampilkan plot histogram.</p></li>
 </ol>
-<p>###melakukan penskalaan standar pada data menggunakan library scikit-learn</p>
+<p><h3>melakukan penskalaan standar pada data menggunakan library scikit-learn</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -660,7 +660,7 @@ plt.show() menampilkan plot histogram.</p></li>
 </div>
 </div>
 </div>
-<p>###menghitung dan mencetak matriks kovarian dari data yang telah distandardisasi.</p>
+<p><h3>menghitung dan mencetak matriks kovarian dari data yang telah distandardisasi.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X_std</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -680,7 +680,7 @@ plt.show() menampilkan plot histogram.</p></li>
 </div>
 </div>
 <p>Kode tersebut melakukan normalisasi data menggunakan StandardScaler dan kemudian menghitung matriks kovarian dari data yang telah dinormalisasi. Hasilnya dicetak sebagai “Covariance Matrix” diikuti oleh nilai matriks kovarian.</p>
-<p>###mencetak matriks kovarian menggunakan np.cov pada data yang telah distandardisasi.</p>
+<p><h3>mencetak matriks kovarian menggunakan np.cov pada data yang telah distandardisasi.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy Covariance matrix </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">np</span>.cov(X_std.T))
@@ -698,7 +698,7 @@ plt.show() menampilkan plot histogram.</p></li>
 </div>
 </div>
 <p>Kode tersebut menghitung matriks kovarian dari data yang telah dinormalisasi <code class="docutils literal notranslate"><span class="pre">X_std</span></code> menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">np.cov()</span></code>. Hasilnya dicetak sebagai “Numpy Covariance matrix” diikuti oleh nilai matriks kovarian.</p>
-<p>###menghitung eigenvector dan eigenvalue dari matriks kovarian, dan mencetak hasilnya.</p>
+<p><h3>menghitung eigenvector dan eigenvalue dari matriks kovarian, dan mencetak hasilnya.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_mat</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X_std</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -723,8 +723,8 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut menghitung eigenvektor dan eigennilai dari matriks kovarian menggunakan <code class="docutils literal notranslate"><span class="pre">np.linalg.eig()</span></code>. Hasilnya dicetak sebagai “Eigenvectors” diikuti oleh nilai eigenvektor, dan “Eigenvalues” diikuti oleh nilai eigennilai.</p>
-<p>##Matriks Korelasi</p>
-<p>###menghitung matriks korelasi, eigenvector, dan eigenvalue, kemudian mencetak hasilnya.</p>
+<p><h2>Matriks Korelasi</h2></p>
+<p><h3>menghitung matriks korelasi, eigenvector, dan eigenvalue, kemudian mencetak hasilnya.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_mat1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_std</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -771,7 +771,7 @@ Eigenvelues
 </div>
 </div>
 </div>
-<p>###menggunakan Singular Value Decomposition (SVD) pada transpose matriks X_std dan hasilnya disimpan dalam variabel u.</p>
+<p><h3>menggunakan Singular Value Decomposition (SVD) pada transpose matriks X_std dan hasilnya disimpan dalam variabel u.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X_std</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -789,7 +789,7 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut menghitung SVD (Singular Value Decomposition) dari matriks data yang telah dinormalisasi <code class="docutils literal notranslate"><span class="pre">X_std.T</span></code> menggunakan <code class="docutils literal notranslate"><span class="pre">np.linalg.svd()</span></code>. Hasilnya, nilai-nilai dari SVD disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">u</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code>, dan <code class="docutils literal notranslate"><span class="pre">v</span></code>. Kemudian, kode mencetak nilai dari <code class="docutils literal notranslate"><span class="pre">u</span></code>, yang merupakan matriks utama dari SVD.</p>
-<p>###memverifikasi norma eigenvector dan mencetak pesan jika valid.</p>
+<p><h3>memverifikasi norma eigenvector dan mencetak pesan jika valid.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ev</span> <span class="ow">in</span> <span class="n">eig_vecs</span><span class="o">.</span><span class="n">T</span><span class="p">:</span>
@@ -805,7 +805,7 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut melakukan iterasi melalui setiap vektor eigen <code class="docutils literal notranslate"><span class="pre">ev</span></code> yang telah di-transpose (<code class="docutils literal notranslate"><span class="pre">eig_vecs.T</span></code>). Pada setiap iterasi, kode menggunakan <code class="docutils literal notranslate"><span class="pre">np.linalg.norm()</span></code> untuk menghitung norma dari vektor eigen tersebut, dan kemudian memastikan bahwa norma tersebut mendekati nilai 1 dengan menggunakan <code class="docutils literal notranslate"><span class="pre">np.testing.assert_array_almost_equal()</span></code>. Jika semua vektor eigen memiliki norma mendekati 1, maka pesan “Everything is ok” akan dicetak. Kode ini digunakan untuk memverifikasi bahwa vektor eigen yang dihitung benar-benar merupakan vektor unit.</p>
-<p>###Membuat daftar pasangan (nilai eigen, vektor eigen)</p>
+<p><h3>Membuat daftar pasangan (nilai eigen, vektor eigen)</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a list of (eigenvalue, eigenvector) tuples</span>
@@ -832,7 +832,7 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut mengurutkan eigennilai dalam urutan menurun dan mencetaknya. Eigennilai adalah angka yang menggambarkan variasi atau pentingnya setiap vektor eigen dalam matriks data.</p>
-<p>###Menghitung persentase variasi dan kumulatif menggunakan eigenvalues terurut.</p>
+<p><h3>Menghitung persentase variasi dan kumulatif menggunakan eigenvalues terurut.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tot</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">eig_vals</span><span class="p">)</span>
@@ -843,7 +843,7 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut menghitung persentase variasi yang dijelaskan oleh setiap eigennilai, serta menghitung akumulasi persentase variasi dari eigennilai tersebut.</p>
-<p>###membuat gambar persentase variasi dan variasi kumulatif yang dijelaskan.</p>
+<p><h3>membuat gambar persentase variasi dan variasi kumulatif yang dijelaskan.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">):</span>
@@ -874,7 +874,7 @@ Eigenvelues
 <li><p>plt.legend(loc=’best’): Kode ini menampilkan legenda dengan posisi terbaik (loc=’best’) yang mencakup label-label yang ditetapkan sebelumnya.</p></li>
 <li><p>plt.tight_layout(): Kode ini mengatur tata letak plot secara otomatis untuk memastikan elemen-elemen plot terlihat dengan baik.</p></li>
 </ol>
-<p>###menggabungkan dua vektor eigen terpilih menjadi sebuah matriks</p>
+<p><h3>menggabungkan dua vektor eigen terpilih menjadi sebuah matriks</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">eig_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
@@ -898,7 +898,7 @@ Eigenvelues
 <li><p>matrix_w = np.hstack((eig_pairs[0][1].reshape(4,1), eig_pairs[1][1].reshape(4,1)))<code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">Kode</span> <span class="pre">ini</span> <span class="pre">menggabungkan</span> <span class="pre">dua</span> <span class="pre">vektor</span> <span class="pre">eigen</span> <span class="pre">teratas</span> <span class="pre">dari</span> </code>eig_pairs<code class="docutils literal notranslate"><span class="pre">ke</span> <span class="pre">dalam</span> <span class="pre">matriks</span></code>matrix_w<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">Fungsi</span> </code>np.hstack()<code class="docutils literal notranslate"><span class="pre">digunakan</span> <span class="pre">untuk</span> <span class="pre">menggabungkan</span> <span class="pre">vektor</span> <span class="pre">secara</span> <span class="pre">horizontal.</span></code>eig_pairs[0][1]<code class="docutils literal notranslate"><span class="pre">adalah</span> <span class="pre">vektor</span> <span class="pre">eigen</span> <span class="pre">teratas</span> <span class="pre">pertama,</span> <span class="pre">sedangkan</span></code>eig_pairs[1][1]<code class="docutils literal notranslate"><span class="pre">adalah</span> <span class="pre">vektor</span> <span class="pre">eigen</span> <span class="pre">teratas</span> <span class="pre">kedua.</span> <span class="pre">Fungsi</span></code>reshape(4,1)<code class="docutils literal notranslate"><span class="pre">digunakan</span> <span class="pre">untuk</span> <span class="pre">mengubah</span> <span class="pre">dimensi</span> <span class="pre">vektor</span> <span class="pre">menjadi</span></code>(4,1)<code class="docutils literal notranslate"><span class="pre">sehingga</span> <span class="pre">dapat</span> <span class="pre">digabungkan</span> <span class="pre">dalam</span> <span class="pre">matriks.</span> <span class="pre">Hasilnya</span> <span class="pre">disimpan</span> <span class="pre">dalam</span> <span class="pre">variabel</span></code>matrix_w`.</p></li>
 <li><p>print(‘Matrix W:\n’, matrix_w)<code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">Kode</span> <span class="pre">ini</span> <span class="pre">mencetak</span> <span class="pre">matriks</span> </code>matrix_w` dengan pesan “Matrix W:”.</p></li>
 </ol>
-<p>###mengalikan matriks X_std dengan matriks W dan menyimpan hasilnya dalam matriks Y.</p>
+<p><h3>mengalikan matriks X_std dengan matriks W dan menyimpan hasilnya dalam matriks Y.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span> <span class="o">=</span> <span class="n">X_std</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">matrix_w</span><span class="p">)</span>
@@ -907,7 +907,7 @@ Eigenvelues
 </div>
 </div>
 <p>Y = X_std.dot(matrix_w): Kode ini melakukan perkalian antara matriks data yang telah dinormalisasi X_std dengan matriks transformasi matrix_w menggunakan operator dot(). Hasilnya disimpan dalam variabel Y, yang merupakan matriks hasil transformasi.</p>
-<p>###membuat scatter plot dua dimensi dengan warna berbeda untuk setiap label.</p>
+<p><h3>membuat scatter plot dua dimensi dengan warna berbeda untuk setiap label.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">):</span>
@@ -931,7 +931,7 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut membuat scatter plot dari hasil transformasi <code class="docutils literal notranslate"><span class="pre">Y</span></code> dengan dua komponen utama. Setiap kelas ditampilkan dengan warna yang berbeda dalam plot tersebut.</p>
-<p>###mengubah data ‘X_std’ menjadi matriks ‘Y_sklearn’ berdimensi dua.</p>
+<p><h3>mengubah data ‘X_std’ menjadi matriks ‘Y_sklearn’ berdimensi dua.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span> <span class="k">as</span> <span class="n">sklearnPCA</span>
@@ -941,7 +941,7 @@ Eigenvelues
 </div>
 </div>
 </div>
-<p>###membuat scatter plot dua dimensi dengan warna berbeda untuk setiap label</p>
+<p><h3>membuat scatter plot dua dimensi dengan warna berbeda untuk setiap label</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">):</span>
@@ -965,7 +965,7 @@ Eigenvelues
 </div>
 </div>
 <p>Kode tersebut menggunakan metode PCA dari scikit-learn untuk melakukan reduksi dimensi dan membuat scatter plot dari hasil transformasi. Hasil transformasi disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">Y_sklearn</span></code>, dan plot tersebut menampilkan titik-titik dengan warna yang berbeda untuk setiap kelas.</p>
-<p>###DataFrame ‘data’ yang berisi kolom ‘X’ dan ‘Y’ yang berisi nilai dari matriks Y_sklearn.</p>
+<p><h3>DataFrame ‘data’ yang berisi kolom ‘X’ dan ‘Y’ yang berisi nilai dari matriks Y_sklearn.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Y_sklearn</span><span class="p">)</span>
