@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>Metode Mechine Learning &#8212; My sample book</title>
   
   
   
@@ -156,10 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Load_Data.html">Load Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="21_145_Niswatul_Sifa_UTS_Penambangan_Data.html">Klasifikasi Naive Bayes</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="PCA_Iris.html">Import Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA_Metode.html">Import Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21_145_Niswatul_Sifa_UTS_Penambangan_Data.html">UTS Penambangan Data</a></li>
+<li class="toctree-l1"><a class="current reference internal" href="PCA_Iris">PCA Iris</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PCA_Metode">PCA Metode</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metode Machine Learning</a></li>
 </ul>
 
     </div>
@@ -396,8 +397,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>#<strong>Penerapan beberapa metode Machine Learning pada dataset Iris</strong></p>
-<p>###Import Library</p>
+  <p><h1><strong>Penerapan beberapa metode Machine Learning pada dataset Iris</strong></h1></p>
+<p><h3>Import Library</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -408,7 +409,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>###Import dataset iris menggunakan dataframe pandas</p>
+<p><h3>Import dataset iris menggunakan dataframe pandas</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/niswatulsifa/data_iris/master/IrisDataset.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
@@ -606,7 +607,7 @@ Name: species, dtype: int64
 </div>
 </div>
 <p>Memisahkan data dalam DataFrame ‘df’ menjadi dua bagian, dengan kolom 0 hingga 3 (indeks 0, 1, 2, dan 3) disimpan dalam variabel ‘X’ dan kolom 4 disimpan dalam variabel ‘y’.</p>
-<p>###Membuat gambar histogram dari empat fitur dalam DataFrame ‘X’</p>
+<p><h3>Membuat gambar histogram dari empat fitur dalam DataFrame ‘X’</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_dict</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;setosa&#39;</span><span class="p">,</span>
@@ -635,7 +636,7 @@ Name: species, dtype: int64
 <img alt="_images/6eb9293cf189462083a501602604f9d40f17e6c08871f2f8065e560709233488.png" src="_images/6eb9293cf189462083a501602604f9d40f17e6c08871f2f8065e560709233488.png" />
 </div>
 </div>
-<p>###Splitting Data</p>
+<p><h3>Splitting Data</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -644,7 +645,7 @@ Name: species, dtype: int64
 </div>
 </div>
 </div>
-<p>###Preprocessing Menggunakan StandardScaler</p>
+<p><h3>Preprocessing Menggunakan StandardScaler</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -655,8 +656,8 @@ Name: species, dtype: int64
 </div>
 </div>
 </div>
-<p>#<strong>Metode Naive Bayes</strong></p>
-<p>###Import modul GaussianNB</p>
+<p><h1><strong>Metode Naive Bayes</strong><h1></p>
+<p><h3>Import modul GaussianNB</h3></p>
 <p>GaussianNB adalah implementasi dari algoritma Naive Bayes dengan asumsi bahwa fitur-fitur yang independen diambil dari distribusi Gaussian.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +671,7 @@ Name: species, dtype: int64
 <div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GaussianNB</label><div class="sk-toggleable__content"><pre>GaussianNB()</pre></div></div></div></div></div></div></div>
 </div>
 <p>Membuat objek GaussianNB yang akan digunakan sebagai model klasifikasi. Kemudian melatih model GaussianNB menggunakan data latih X_train dan label latih y_train. Model akan belajar untuk melakukan klasifikasi berdasarkan prinsip Naive Bayes.</p>
-<p>###Melakukan Prediksi</p>
+<p><h3>Melakukan Prediksi</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> 
@@ -690,7 +691,7 @@ Name: species, dtype: int64
 </div>
 </div>
 <p>Menggunakan model GaussianNB yang telah dilatih untuk melakukan prediksi pada data uji X_test. Hasil prediksi disimpan dalam variabel y_pred.</p>
-<p>###Menghitung Akurasi dan menampilkan Confusion Matrix</p>
+<p><h3>Menghitung Akurasi dan menampilkan Confusion Matrix</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -716,7 +717,7 @@ Name: species, dtype: int64
 <li><p>Menggunakan fungsi confusion_matrix untuk menghitung matriks kebingungan antara label sebenarnya y_test dan label yang diprediksi y_pred. Hasilnya disimpan dalam variabel cm.</p></li>
 <li><p>Menghitung nilai akurasi model pada data uji menggunakan accuracy_score. Accuracy score adalah metrik yang digunakan untuk mengukur akurasi model klasifikasi.</p></li>
 </ol>
-<p>###Membuat Dataframe yang berisi menampilkan label sebenarnya dan label yang diprediksi untuk setiap data pada data uji.</p>
+<p><h3>Membuat Dataframe yang berisi menampilkan label sebenarnya dan label yang diprediksi untuk setiap data pada data uji.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Real Values&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted Values&#39;</span><span class="p">:</span><span class="n">y_pred</span><span class="p">})</span>
@@ -981,8 +982,8 @@ Name: species, dtype: int64
   </div>
   </div></div>
 </div>
-<p>#<strong>Metode KNN</strong></p>
-<p>###Import Modul KNeighborsClassifier</p>
+<p><h1><strong>Metode KNN</strong></h1></p>
+<p><h3>Import Modul KNeighborsClassifier</h3></p>
 <p>KNeighborsClassifier adalah algoritma pembelajaran mesin yang digunakan untuk klasifikasi berdasarkan k-nearest neighbors (k tetangga terdekat).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -999,7 +1000,7 @@ Name: species, dtype: int64
 <li><p>Membuat objek KNeighborsClassifier dengan n_neighbors yang ditetapkan sebagai 5, yang berarti model akan menggunakan 5 tetangga terdekat untuk melakukan klasifikasi.</p></li>
 <li><p>Melatih model KNN menggunakan data latih X_train dan label latih y_train. Model akan belajar untuk menentukan klasifikasi berdasarkan tetangga terdekat.</p></li>
 </ol>
-<p>###Melakukan Prediksi</p>
+<p><h3>Melakukan Prediksi</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> 
@@ -1019,7 +1020,7 @@ Name: species, dtype: int64
 </div>
 </div>
 <p>Model KNN yang sudah dilatih sebelumnya akan dilakukan prediksi dengan data uji yang kemudian hasilnya disimpan dalam variabel y_pred.</p>
-<p>###Menghitung Akurasi dan menampilkan Confusion Matrix</p>
+<p><h3>Menghitung Akurasi dan menampilkan Confusion Matrix</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -1045,7 +1046,7 @@ Name: species, dtype: int64
 <li><p>Menggunakan fungsi confusion_matrix untuk menghitung matriks kebingungan antara label sebenarnya y_test dan label yang diprediksi y_pred. Hasilnya disimpan dalam variabel cm.</p></li>
 <li><p>Menghitung nilai akurasi model pada data uji menggunakan accuracy_score. Accuracy score adalah metrik yang digunakan untuk mengukur akurasi model klasifikasi.</p></li>
 </ol>
-<p>###Membuat Dataframe yang berisi menampilkan label sebenarnya dan label yang diprediksi untuk setiap data pada data uji.</p>
+<p><h3>Membuat Dataframe yang berisi menampilkan label sebenarnya dan label yang diprediksi untuk setiap data pada data uji.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Real Values&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted Values&#39;</span><span class="p">:</span><span class="n">y_pred</span><span class="p">})</span>
@@ -1310,8 +1311,8 @@ Name: species, dtype: int64
   </div>
   </div></div>
 </div>
-<p>#<strong>Metode ANN</strong></p>
-<p>###Import Modul MLPClassifier</p>
+<p><h1><strong>Metode ANN</strong></h1></p>
+<p><h3>Import Modul MLPClassifier</h3></p>
 <p>MLPClassifier adalah sebuah model Artificial Neural Network (ANN) dengan multi-layer perceptron yang digunakan untuk klasifikasi.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1322,7 +1323,7 @@ Name: species, dtype: int64
 </div>
 </div>
 </div>
-<p>###Konfigurasi Pada Modul MLPClassifier</p>
+<p><h3>Konfigurasi Pada Modul MLPClassifier</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>
@@ -1341,7 +1342,7 @@ Name: species, dtype: int64
 <li><p>random_state=21 menentukan seed untuk inisialisasi bobot secara acak.</p></li>
 <li><p>tol=0.001 adalah toleransi penghentian pelatihan.</p></li>
 </ol>
-<p>###Melatih Model MLPClassifier</p>
+<p><h3>Melatih Model MLPClassifier</h3></p>
 <p>Melatih model MLPClassifier menggunakan data latih X_train dan label latih y_train. Model akan belajar untuk melakukan klasifikasi menggunakan metode backpropagation. Kemudian melakukan prediksi pada data uji dan hasilnya disimpan dalam variabel y_pred.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1653,7 +1654,7 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
 </div>
 </div>
 </div>
-<p>###Menghitung Akurasi Model</p>
+<p><h3>Menghitung Akurasi Model</h3></p>
 <p>Menghitung akurasi model dengan membandingkan label sebenarnya y_test dengan label yang diprediksi y_pred menggunakan fungsi accuracy_score. Nilai akurasi akan dihasilkan sebagai output.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1667,7 +1668,7 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
 </div>
 </div>
 </div>
-<p>###Membuat Dataframe yang berisi menampilkan label sebenarnya dan label yang diprediksi untuk setiap data pada data uji.</p>
+<p><h3>Membuat Dataframe yang berisi menampilkan label sebenarnya dan label yang diprediksi untuk setiap data pada data uji.</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Real Values&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted Values&#39;</span><span class="p">:</span><span class="n">y_pred</span><span class="p">})</span>
@@ -1932,8 +1933,8 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
   </div>
   </div></div>
 </div>
-<p>#<strong>Metode DecisionTree</strong></p>
-<p>###Import Modul DecisionTreeClassifier</p>
+<p><h1><strong>Metode DecisionTree</strong></h1></p>
+<p><h3>Import Modul DecisionTreeClassifier</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
@@ -1942,7 +1943,7 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
 </div>
 </div>
 <p>Decision Tree Classifier adalah algoritma pembelajaran mesin yang digunakan untuk membangun model klasifikasi berdasarkan aturan keputusan berhirarki yang dihasilkan dari fitur-fitur data.</p>
-<p>###Membuat objek Decision Tree Classifier menggunakan indeks Gini</p>
+<p><h3>Membuat objek Decision Tree Classifier menggunakan indeks Gini</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_gini</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -1954,7 +1955,7 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
 <div class="output text_html"><style>#sk-container-id-3 {color: black;background-color: white;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier(max_depth=3, random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier(max_depth=3, random_state=42)</pre></div></div></div></div></div></div></div>
 </div>
 <p>Membuat objek Decision Tree Classifier dengan menggunakan indeks Gini sebagai kriteria pemilihan fitur, batasan kedalaman maksimum pohon adalah 3, dan seed random state adalah 42. Objek ini akan digunakan untuk melatih model Decision Tree. kemudian melatih model Decision Tree Classifier menggunakan data latih X_train dan label latih y_train. Model akan belajar untuk mempelajari pola dalam data untuk melakukan klasifikasi.</p>
-<p>###Melakukan Prediksi Pada data uji</p>
+<p><h3>Melakukan Prediksi Pada data uji</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_gini</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1963,7 +1964,7 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
 </div>
 </div>
 <p>Menggunakan model Decision Tree yang telah dilatih untuk melakukan prediksi pada data uji X_test kemudian disimpan dalam variabel y_pred_gini.</p>
-<p>###Menghitung Akurasi model menggunakan kriteria indeks Gini pada data uji</p>
+<p><h3>Menghitung Akurasi model menggunakan kriteria indeks Gini pada data uji</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
@@ -2014,7 +2015,7 @@ Training loss did not improve more than tol=0.001000 for 10 consecutive epochs. 
 </div>
 </div>
 </div>
-<p>###Menghitung skor model pada data latih dan data uji</p>
+<p><h3>Menghitung skor model pada data latih dan data uji</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training set score: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">clf_gini</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
@@ -2030,7 +2031,7 @@ Test set score: 1.00
 </div>
 </div>
 <p>Skor ini menunjukkan seberapa baik model dapat diterapkan pada data yang tidak terlihat sebelumnya.</p>
-<p>###Membuat Visualisasi Decision Tree</p>
+<p><h3>Membuat Visualisasi Decision Tree</h3></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -2046,7 +2047,7 @@ Test set score: 1.00
 <img alt="_images/b37e240867fb202b571ba2b96ff51205e841d38f4215593592e7fcbd3274391a.png" src="_images/b37e240867fb202b571ba2b96ff51205e841d38f4215593592e7fcbd3274391a.png" />
 </div>
 </div>
-<p>#<strong>Kesimpulan</strong></p>
+<p><h1><strong>Kesimpulan</strong></h1></p>
 <p>Dari beberapa metode yang digunakan yaitu Decision Tree, KNN , Naive Bayes dan ANN untuk klasifikasi menggunakan dataset iris yang berjumlah 150 data dengan jumlah label sebanyak 3 kelas dimana masing-masing kelas terdapat 50 data . Kemudian dilakukan pembagian data 80:20 yaitu data training sebanyak 80% dan data latih sebanyak 20%. Maka didapatkan hasil sebagai berikut:</p>
 <ol class="arabic simple">
 <li><p>pada metode Decision Tree nilai akurasi yang didapat menggunakan kriteria indeks Gini dengan batasan kedalaman maksimum pohon (max_depth) adalah 3 didapatkan hasil akurasi 1.0 atau 100%.</p></li>
@@ -2092,7 +2093,7 @@ Test set score: 1.00
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Import Library</p>
+        <p class="prev-next-title">PCA Metode</p>
       </div>
     </a>
 </div></div>
@@ -2137,7 +2138,7 @@ By Niswatul Sifa
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
