@@ -1,7 +1,3 @@
-from asyncio import futures
-from tkinter import Button
-from tkinter.ttk import Style
-from typing import Container
 import streamlit as st
 from PIL import Image
 from sklearn.neighbors import KNeighborsClassifier
